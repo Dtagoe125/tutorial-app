@@ -6,9 +6,19 @@
 </head>
 <body>
 <h1>Tutorials</h1>
-<strong>{{ boldmessage }}</strong>
-<br>
-<img src="{% static 'images/Photo.jpg' %}">
-<br>
+Here is knowledge <br />
+{{% if categories }}
+	<ul>
+		{% for category in categories %}
+		<li>{{ category.name }}</li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<strong>There are no categories present.</strong>
+{% endif %}
+
+	<a href="/about/">About</a><br />
+	<img src="{% static 'images/image.jpg' %}" alt="Picture of UF0907" />
+	
 </body>
 </html>

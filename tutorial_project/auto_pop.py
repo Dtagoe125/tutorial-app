@@ -1,7 +1,7 @@
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tutorial_project.settings')
 
-import djaaango
+import django
 django.setup()
 
 from tutorial_app.models import Category, Page
@@ -10,12 +10,12 @@ def add_cat(name):
 	c = Category.objects.get_or_create(name=name)[0]
 	return c
 
-def add_page(cat, title, url, views=0);
-p = Page.objects.get_or_create(category=cat, title=title)[0]
-p.url=url
-p.views=views
-p.save()
-return p
+def add_page(cat, title, url, views=0):
+	p = Page.objects.get_or_create(category=cat, title=title)[0]
+	p.url=url
+	p.views=views
+	p.save()
+	return p
 
 def populate():
 	python_cat = add_cat('Python')
