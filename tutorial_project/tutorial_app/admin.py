@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from models import Category, Page
 
 class CategoryAdmin(admin.ModelAdmin):
