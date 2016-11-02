@@ -61,6 +61,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    )
+
 ROOT_URLCONF = 'tutorial_project.urls'
 
 WSGI_APPLICATION = 'tutorial_project.wsgi.application'
@@ -89,6 +96,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL ='/login/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
