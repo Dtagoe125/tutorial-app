@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Tutorial Repo 718</title>
-	</head>
-	<body>
-		<h1>Add a Page</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add Pages {% endblock %}
+{% block body_block %}
+<h1>Add a Page {{category.name}}</h1>
 
 		<form id="page_form" method="post" action="/category/{{slug}}/add_page">
 
@@ -21,5 +19,4 @@
 
 			<input type="submit" name="submit" value="Add Page" />
 		</form>
-	</body>
-</html>
+{% endblock %}

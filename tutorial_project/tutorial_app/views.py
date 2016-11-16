@@ -5,10 +5,16 @@ from models import Page, Category
 from forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 # Create your views here.
 
 def index(request):
+	request.session.set_test_cookie()
+	if request.session.test_cookie_worked():
+		print ">>>> TEST COOKIE WORKED!"
+		request.session.delete_test_cookie()
+
 	# Query the database for a list of ALL categories currently stored.
 	# Order the categories by no. likes in descending order.
 	# Retrieve the top 5 only - or all if less than 5.
@@ -16,12 +22,14 @@ def index(request):
 	category_list = Category.objects.order_by('-likes')[:5]
 	context_dict = {'categories': category_list}
 	page_list = Page.objects.order_by('-views')[:5]
-	context_dict = {'categories' : category_list,	'pages' : page_list }
+	context_dict = {'categories' : category_list,
+					'pages' : page_list 
+					}
 	# Render the response nd send it back!
 	return render(request, 'index.html', context_dict)
 
 def about(request):
-	return HttpResponse ('About Us')
+	return render(request, 'about.html', ())
 
 def category(request, category_name_slug):
 
