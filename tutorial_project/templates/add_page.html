@@ -2,9 +2,10 @@
 {% load static %}
 {% block title %}Add Pages {% endblock %}
 {% block body_block %}
+{% load extras %}
 <h1>Add a Page {{category.name}}</h1>
-
-		<form id="page_form" method="post" action="/category/{{slug}}/add_page">
+		
+		<form role="form" id="page_form" method="post" action="/category/{{slug}}/add_page">
 
 			{% csrf_token %}
 			{% for hidden in form.hidden_fields %}
@@ -12,9 +13,11 @@
 			{% endfor %}
 
 			{% for field in form.visible_fields %}
+			<div class='form-group'>
 				{{ field.errors }}
 				{{ field.help_text }}
-				{{ field }}
+				{{ field |addcls:'form-control' }}<br>
+				</div>
 			{% endfor %}
 
 			<input type="submit" name="submit" value="Add Page" />
